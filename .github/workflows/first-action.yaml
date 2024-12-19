@@ -1,0 +1,11 @@
+name: Test React Project
+on: push # On a push event, trigger the jobs below
+
+jobs:
+  test: # Name of the Job that we have under the Workflow
+
+    runs-on: ubuntu-latest # The runner that we will use to execute the steps
+
+    steps:
+        - name: Fetch the code from Repository
+          uses: actions/checkout
