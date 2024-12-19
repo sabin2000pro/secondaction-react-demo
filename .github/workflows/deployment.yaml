@@ -2,7 +2,7 @@ name: Deploy Frontend Project # Mutli Stage Deployment Pipeline using Github Act
 on: push
 
 jobs:
-  test: # 2. Specify Name of the Job that we have under the Workflow, first one is for running Unit Tests
+  test: # Unit Testing Stage
 
     runs-on: ubuntu-latest # 3. Define The runner that we will use to execute the steps
     steps:
