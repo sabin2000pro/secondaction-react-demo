@@ -1,5 +1,5 @@
 name: Deploy Frontend Project # Mutli Stage Deployment Pipeline using Github Actions
-on: push
+on: [push, workflow_dispatch]
 
 jobs:
   test: # Unit Testing Stage
