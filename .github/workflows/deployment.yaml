@@ -1,0 +1,45 @@
+name: Deploy Project # Mutli Stage Deployment Pipeline using Github Actions
+on: push
+
+jobs:
+  test: # 2. Specify Name of the Job that we have under the Workflow, first one is for running Unit Tests
+
+    runs-on: ubuntu-latest # 3. Define The runner that we will use to execute the steps
+    steps:
+
+        - name: Fetch the code from Repository
+          uses: actions/checkout@v3 # Use the Checkout Action actions/checkout
+
+        - name: Install NodeJS
+          uses: actions/setup-node@v3
+
+          with:
+            node-version: '23'
+
+        - name: Install Dependencies
+          run: npm ci
+    
+        - name: Run Unit Tests
+          run: npm test
+
+  deploy: # Step 2 (Deploying application)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fetch code from repo
+        uses: actions/checkout@v3 # Use the Checkout Action actions/checkout
+
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+
+        with:
+          node-version: '23'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Deploy To AWS (Test)
+        run: echo "Deploying to AWS..."
